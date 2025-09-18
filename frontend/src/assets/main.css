@@ -1,0 +1,458 @@
+/* ===== IMPORTACIÓN DE ESTILOS GLOBALES ===== */
+@import './global-styles.css';
+
+/* ===== CONFIGURACIÓN ESPECÍFICA DE LA APP ===== */
+
+/* El contenedor principal de la app */
+#app {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* Contenedor principal optimizado */
+.app-container {
+  display: flex;
+  height: 100vh;
+  width: 100vw;
+  background-color: var(--bg-secondary);
+  overflow: hidden;
+}
+
+/* Contenido principal optimizado */
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  padding: var(--spacing-xl);
+  background-color: var(--bg-secondary);
+  overflow-y: auto;
+  height: 100vh;
+}
+
+/* Wrapper para el contenido con estilos unificados */
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg-primary);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-lg);
+  padding: var(--spacing-xl);
+  min-height: calc(100vh - 4rem);
+}
+
+/* ===== RESPONSIVE ESPECÍFICO ===== */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    position: static;
+    flex-direction: row;
+    overflow-x: auto;
+    height: auto;
+  }
+
+  .main-content {
+    margin-left: 0;
+    padding: var(--spacing-md);
+  }
+
+  .content-wrapper {
+    padding: var(--spacing-md);
+    min-height: auto;
+  }
+}
+
+/* ===== SOBREESCRITURAS ESPECÍFICAS PARA COMPONENTES EXISTENTES ===== */
+
+/* Para mantener compatibilidad con componentes existentes */
+.proceso-planta-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.orden-corte-box {
+  padding: var(--spacing-xl);
+}
+
+.orden-title {
+  font-size: var(--font-size-3xl);
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-xl);
+  text-align: center;
+  font-weight: 700;
+}
+
+.search-bar {
+  margin-bottom: var(--spacing-lg);
+  position: relative;
+}
+
+.search-input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  font-size: var(--font-size-base);
+  background-color: var(--bg-primary);
+  transition: all var(--transition-fast);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--primary-blue);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+.lista-ordenes-busqueda {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-top: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-radius: 0 0 var(--border-radius) var(--border-radius);
+}
+
+.item-orden-busqueda {
+  padding: var(--spacing-md);
+  cursor: pointer;
+  border-bottom: 1px solid var(--gray-100);
+  transition: background-color var(--transition-fast);
+}
+
+.item-orden-busqueda:hover {
+  background-color: var(--gray-50);
+}
+
+.ordenes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-lg);
+}
+
+.orden-item {
+  background-color: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--border-radius);
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-md);
+  transition: all var(--transition-fast);
+  display: flex;
+  flex-direction: column;
+}
+
+.orden-item:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.orden-item h2 {
+  font-size: var(--font-size-xl);
+  color: var(--primary-blue);
+  margin: 0 0 var(--spacing-md) 0;
+  border-bottom: 2px solid var(--primary-blue);
+  padding-bottom: var(--spacing-sm);
+  text-align: center;
+  font-weight: 600;
+}
+
+.orden-info p {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+}
+
+.orden-info strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.btn-seleccionar {
+  display: block;
+  width: 100%;
+  padding: var(--spacing-md);
+  background-color: var(--secondary-green);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  margin-top: var(--spacing-lg);
+  transition: all var(--transition-fast);
+}
+
+.btn-seleccionar:hover {
+  background-color: var(--secondary-green-dark);
+  transform: translateY(-1px);
+}
+
+.sin-ordenes {
+  text-align: center;
+  padding: var(--spacing-xxl);
+  font-size: var(--font-size-lg);
+  color: var(--text-muted);
+}
+
+.no-orden-seleccionada {
+  text-align: center;
+  padding: var(--spacing-xxl);
+  font-size: var(--font-size-lg);
+  color: var(--text-muted);
+}
+
+.btn-go-to-orders {
+  padding: var(--spacing-md) var(--spacing-xl);
+  background-color: var(--primary-blue);
+  color: white;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-top: var(--spacing-lg);
+  transition: all var(--transition-fast);
+}
+
+.btn-go-to-orders:hover {
+  background-color: var(--primary-blue-dark);
+  transform: translateY(-1px);
+}
+
+/* ===== ESTILOS ESPECÍFICOS PARA VISTAS DE PROCESO ===== */
+.delantero-view,
+.trasero-view,
+.ensamble-view {
+  font-family: var(--font-family);
+  padding: var(--spacing-lg);
+  background-color: var(--bg-secondary);
+}
+
+/* Sobrescribir estilos específicos de las vistas para usar variables globales */
+.delantero-view h1,
+.trasero-view h1,
+.ensamble-view h1 {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 700;
+}
+
+.delantero-view h2,
+.trasero-view h2,
+.ensamble-view h2 {
+  font-size: var(--font-size-2xl);
+  margin-bottom: var(--spacing-md);
+  color: var(--text-primary);
+  text-align: center;
+  font-weight: 600;
+}
+
+/* Filtros unificados */
+.mb-4.flex.flex-col.md\:flex-row.gap-4,
+.mb-6.p-4.bg-blue-50 {
+  padding: var(--spacing-lg);
+  border-radius: var(--border-radius);
+  box-shadow: var(--shadow-md);
+  background-color: var(--bg-soft);
+  margin-bottom: var(--spacing-lg);
+}
+
+/* Inputs y selects unificados */
+input[type='text'],
+input[type='number'],
+select {
+  padding: var(--spacing-md);
+  font-size: var(--font-size-base);
+  border: 2px solid var(--border-color);
+  border-radius: var(--border-radius);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: all var(--transition-fast);
+}
+
+input[type='text']:focus,
+input[type='number']:focus,
+select:focus {
+  border-color: var(--primary-blue);
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* Botones unificados */
+button {
+  font-size: var(--font-size-base);
+  padding: var(--spacing-md) var(--spacing-lg);
+  border-radius: var(--border-radius);
+  font-weight: 600;
+  transition: all var(--transition-fast);
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.bg-blue-600 {
+  background-color: var(--primary-blue);
+  color: white;
+}
+
+.bg-blue-600:hover {
+  background-color: var(--primary-blue-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.bg-blue-500 {
+  background-color: var(--primary-blue-light);
+  color: white;
+}
+
+.bg-blue-500:hover {
+  background-color: var(--primary-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.bg-green-500 {
+  background-color: var(--secondary-green);
+  color: white;
+}
+
+.bg-green-500:hover {
+  background-color: var(--secondary-green-dark);
+  box-shadow: var(--shadow-md);
+}
+
+button:disabled {
+  background-color: var(--gray-400);
+  color: var(--gray-200);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Tablas unificadas */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+}
+
+th,
+td {
+  padding: var(--spacing-md) var(--spacing-lg);
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+thead th {
+  background-color: var(--primary-blue-bg);
+  color: var(--primary-blue-dark);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: var(--font-size-sm);
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--gray-50);
+}
+
+tbody tr:nth-child(odd) {
+  background-color: var(--bg-primary);
+}
+
+tbody tr:hover {
+  background-color: var(--gray-100);
+  transition: background-color var(--transition-fast);
+}
+
+tbody td {
+  color: var(--text-primary);
+}
+
+/* Estados de filas */
+.bg-green-50 {
+  background-color: #dcfce7;
+}
+
+.bg-yellow-50 {
+  background-color: #fef3c7;
+}
+
+.bg-red-50 {
+  background-color: #fee2e2;
+}
+
+/* Barras de progreso */
+.w-full.bg-gray-200.rounded-full.h-2\.5 {
+  height: 14px;
+  background-color: var(--gray-200);
+}
+
+.h-2\.5.rounded-full {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: white;
+  transition: width var(--transition-slow);
+}
+
+/* Nombres de proceso destacados */
+.process-name {
+  font-weight: 700;
+  color: var(--primary-blue-dark);
+  font-size: var(--font-size-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Primera fila de cada proceso */
+.first-row-of-process {
+  border-top: 2px solid var(--primary-blue);
+}
+
+/* Input inline */
+input.w-24.p-1.border.border-blue-400 {
+  font-size: var(--font-size-base);
+  padding: var(--spacing-sm);
+  text-align: center;
+  border-width: 2px;
+  border-color: var(--primary-blue);
+}
+
+/* Contenedor de tabla */
+.bg-white.rounded-lg.shadow-lg {
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--border-radius);
+}
+
+.text-center.text-gray-600.p-8.bg-white.rounded-lg.shadow-md {
+  background-color: var(--bg-soft);
+  border: 1px solid var(--primary-blue-border);
+  color: var(--primary-blue-dark);
+  font-weight: 500;
+  font-size: var(--font-size-lg);
+}

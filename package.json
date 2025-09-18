@@ -1,0 +1,13 @@
+{
+  "name": "protex",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "concurrently \"npm run dev --prefix frontend\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "@builder.io/dev-tools": "^1.10.10"
+  }
+}
